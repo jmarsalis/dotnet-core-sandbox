@@ -1,5 +1,5 @@
 {
-  "name": "dotnet_core_sandbox",
+  "name": "dotnet-core-sandbox",
   "private": true,
   "dependencies": {
     "bootstrap": "3.3.6",
