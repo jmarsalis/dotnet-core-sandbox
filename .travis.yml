@@ -11,3 +11,13 @@ before_script:
   - chmod a+x ./build.sh
 script:
   - ./build.sh --quiet verify
+deploy:
+- provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  local_dir: code-drop
+  skip_cleanup: true
+  on: &2
+    repo: jmarsalis/dotnet-core-sandbox
+  bucket: being-there
+  region: us-east-1
