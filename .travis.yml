@@ -11,11 +11,15 @@ before_script:
   - chmod a+x ./build.sh
 script:
   - ./build.sh --quiet verify
+before_deploy:
+  - zip -r latest *
+  - mkdir -p code-drop
+  - mv latest.zip code-drop/latest.zip
 deploy:
 - provider: s3
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-  local_dir: dpl_cd_upload
+  local_dir: code-drop
   skip_cleanup: true
   on: &2
     repo: jmarsalis/dotnet-core-sandbox
