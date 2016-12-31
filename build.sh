@@ -15,5 +15,7 @@ fi
 revision=${TRAVIS_JOB_ID:=1}  
 revision=$(printf "%04d" $revision)
 
-# build the application
+# restore and build the application
+dotnet restore
+#dotnet build -c Release
 dotnet publish ./project.json -c Release -o $artifactsFolder --version-suffix=$revision
