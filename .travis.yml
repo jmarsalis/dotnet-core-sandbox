@@ -3,6 +3,9 @@ dist: trusty
 sudo: required
 mono: none
 dotnet: 1.0.0-preview2-1-003177
+branches:  
+  only:
+    - master
 before_script:
   - npm install -g bower
   - chmod a+x ./build.sh
