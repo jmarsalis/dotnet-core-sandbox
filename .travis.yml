@@ -12,14 +12,15 @@ before_script:
 script:
   - ./build.sh --quiet verify
 before_deploy:
-  - zip -r latest *
+  - zip -r artifact.zip ~/src/artifacts/dotnet-core-sandbox/*  # this is the directory created from the build script
   - mkdir -p code-drop
-  - mv latest.zip code-drop/latest.zip
+  - mv artifact.zip code-drop/artifact.zip
 deploy:
 - provider: s3
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   local_dir: code-drop
+  upload_dir: sandbox-artifacts
   skip_cleanup: true
   on: &2
     repo: jmarsalis/dotnet-core-sandbox
