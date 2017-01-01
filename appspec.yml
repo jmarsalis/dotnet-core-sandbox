@@ -1,5 +1,5 @@
 version: 0.0
 os: linux
 files:
-  - source: ./
+  - source: /tmp/build-artifacts/dotnet-core-sandbox
     destination: /var/www/dotnet-core-sandbox

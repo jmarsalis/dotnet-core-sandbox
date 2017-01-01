@@ -13,8 +13,10 @@ script:
   - ./build.sh --quiet verify
 before_deploy:
   - mkdir -p code-drop
-  - zip -r latest.zip /tmp/build-artifacts/* /home/travis/build/jmarsalis/dotnet-core-sandbox/appspec.yml # appspec.yml has to be at the root of the package being created
-  - mv latest.zip code-drop/latest.zip
+  - pushd /home/travis/build/jmarsalis/dotnet-core-sandbox/ # need to be in the directory with appspec.yml so it will be at the root of the zip
+  - zip -r /tmp/latest.zip /tmp/build-artifacts/* ./appspec.yml # appspec.yml has to be at the root of the package being created
+  - popd
+  - mv /tmp/latest.zip code-drop/latest.zip
 deploy:
 - provider: s3
   access_key_id: $AWS_ACCESS_KEY
