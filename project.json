@@ -55,8 +55,7 @@
       "wwwroot",
       "**/*.cshtml",
       "appsettings.json",
-      "web.config",
-      "appspec.yml"
+      "web.config"
     ]
   },
 
