@@ -13,8 +13,8 @@ script:
   - ./build.sh --quiet verify
 before_deploy:
   - mkdir -p code-drop
-  - zip -r artifact.zip /tmp/build-artifacts/*
-  - mv artifact.zip code-drop/artifact.zip
+  - zip -r latest.zip /tmp/build-artifacts/*
+  - mv latest.zip code-drop/latest.zip
 deploy:
 - provider: s3
   access_key_id: $AWS_ACCESS_KEY
@@ -30,7 +30,7 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   bucket: being-there
-  key: sandbox-artifacts/artifact.zip
+  key: sandbox-artifacts/latest.zip
   bundle_type: zip
   application: Mercury
   deployment_group: Sandbox
