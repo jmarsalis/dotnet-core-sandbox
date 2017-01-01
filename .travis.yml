@@ -13,7 +13,7 @@ script:
   - ./build.sh --quiet verify
 before_deploy:
   - mkdir -p code-drop
-  - zip -r latest.zip /tmp/build-artifacts/* jmarsalis/dotnet-core-sandbox/appspec.yml # appspec.yml has to be at the root of the package
+  - zip -r latest.zip /tmp/build-artifacts/* /home/travis/build/jmarsalis/dotnet-core-sandbox/appspec.yml # appspec.yml has to be at the root of the package being created
   - mv latest.zip code-drop/latest.zip
 deploy:
 - provider: s3
