@@ -13,10 +13,8 @@ script:
   - ./build.sh --quiet verify
 before_deploy:
   - mkdir -p code-drop
-  - cd ~/src/artifacts/  # this is the directory created from the build script
-  - zip -r artifact.zip *
+  - zip -r artifact.zip -i /tmp/build-artifacts/*
   - mv artifact.zip code-drop/artifact.zip
-  - cd ~-  # go back to the original directory
 deploy:
 - provider: s3
   access_key_id: $AWS_ACCESS_KEY

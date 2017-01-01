@@ -4,7 +4,7 @@
 set -e
 
 # the location of the output of the build output (must be an absolute path)
-artifactsFolder="~/src/artifacts/dotnet-core-sandbox"
+artifactsFolder="/tmp/build-artifacts/dotnet-core-sandbox"
 
 # remove the drop location if it exists
 if [ -d $artifactsFolder ]; then  
