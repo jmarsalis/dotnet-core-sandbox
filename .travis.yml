@@ -26,3 +26,13 @@ deploy:
     repo: jmarsalis/dotnet-core-sandbox
   bucket: being-there
   region: us-east-1
+- provider: codedeploy
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: being-there
+  key: sandbox-artifacts/artifact.zip
+  bundle_type: zip
+  application: Mercury
+  deployment_group: Sandbox
+  region: us-east-1
+  on: *2
