@@ -12,7 +12,9 @@ before_script:
 script:
   - ./build.sh --quiet verify
 before_deploy:
-  - zip -r artifact.zip ~/src/artifacts/*  # this is the directory created from the build script
+  - cd ~/src/artifacts/  # this is the directory created from the build script
+  - zip -r artifact.zip *
+  - cd ~-  # go back to the previous directory
   - mkdir -p code-drop
   - mv artifact.zip code-drop/artifact.zip
 deploy:
