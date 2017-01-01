@@ -13,7 +13,7 @@ script:
   - ./build.sh --quiet verify
 before_deploy:
   - mkdir -p code-drop
-  - zip -r artifact.zip -i /tmp/build-artifacts/*
+  - zip -r artifact.zip /tmp/build-artifacts/*
   - mv artifact.zip code-drop/artifact.zip
 deploy:
 - provider: s3
