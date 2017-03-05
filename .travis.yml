@@ -8,13 +8,13 @@ branches:
     - master
 before_script:
   - npm install -g bower
-  - chmod a+x ./build.sh
+  - chmod a+x ./scripts/build.sh
 script:
-  - ./build.sh --quiet verify
+  - ./scripts/build.sh --quiet verify
 before_deploy:
   - mkdir -p code-drop
   - pushd /home/travis/build/jmarsalis/dotnet-core-sandbox/ # need to be in the directory with appspec.yml so it will be at the root of the zip
-  - zip -r /tmp/latest.zip /tmp/build-artifacts/* ./appspec.yml # appspec.yml has to be at the root of the package being created
+  - zip -r /tmp/latest.zip /tmp/build-artifacts/* ./appspec.yml ./scripts/restart-website.sh # appspec.yml and referenced scripts have to be at the root of the package being created
   - popd
   - mv /tmp/latest.zip code-drop/latest.zip
 deploy:

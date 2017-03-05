@@ -3,3 +3,7 @@ os: linux
 files:
   - source: /tmp/build-artifacts/dotnet-core-sandbox
     destination: /var/www/dotnet-core-sandbox
+hooks:
+  ApplicationStart:
+    - location: scripts/restart-website.sh
+      timeout: 300
