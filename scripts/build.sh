@@ -18,4 +18,4 @@ revision=$(printf "%04d" $revision)
 # restore and build the application
 dotnet restore
 #dotnet build -c Release
-dotnet publish ./project.json -c Release -o $artifactsFolder --version-suffix=$revision
+dotnet publish ./dotnet-core-sandbox.csproj -c Release -o $artifactsFolder --version-suffix=$revision
