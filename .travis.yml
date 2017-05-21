@@ -2,7 +2,7 @@ language: csharp
 dist: trusty
 sudo: required
 mono: none
-dotnet: 1.0.0-preview2-1-003177
+dotnet: 1.0.1   # this is the version number of the .Net Core SDK, not the .Net Core Runtime
 branches:  
   only:
     - master
@@ -17,24 +17,24 @@ before_deploy:
   - zip -r /tmp/latest.zip /tmp/build-artifacts/* ./appspec.yml ./scripts/restart-website.sh # appspec.yml and referenced scripts have to be at the root of the package being created
   - popd
   - mv /tmp/latest.zip code-drop/latest.zip
-deploy:
-- provider: s3
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
-  local_dir: code-drop
-  upload_dir: sandbox-artifacts
-  skip_cleanup: true
-  on: &2
-    repo: jmarsalis/dotnet-core-sandbox
-  bucket: being-there
-  region: us-east-1
-- provider: codedeploy
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
-  bucket: being-there
-  key: sandbox-artifacts/latest.zip
-  bundle_type: zip
-  application: Mercury
-  deployment_group: Sandbox
-  region: us-east-1
-  on: *2
+#deploy:
+#- provider: s3
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY
+#  local_dir: code-drop
+#  upload_dir: sandbox-artifacts
+#  skip_cleanup: true
+#  on: &2
+#    repo: jmarsalis/dotnet-core-sandbox
+#  bucket: being-there
+#  region: us-east-1
+#- provider: codedeploy
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY
+#  bucket: being-there
+#  key: sandbox-artifacts/latest.zip
+#  bundle_type: zip
+#  application: Mercury
+#  deployment_group: Sandbox
+#  region: us-east-1
+#  on: *2
