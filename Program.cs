@@ -37,6 +37,10 @@ namespace Sandbox
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build()
+            )
             .UseStartup<Startup>()
             .Build();
     }
