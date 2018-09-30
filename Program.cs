@@ -13,35 +13,11 @@ namespace Sandbox
     {
         public static void Main(string[] args)
         {
-            /*
-            .Net 1.1 configs...
-
-            var config = new ConfigurationBuilder()
-                .AddCommandLine(args)
-                .AddEnvironmentVariables(prefix: "ASPNETCORE_")
-                .Build();
-
-            var host = new WebHostBuilder()
-                .UseConfiguration(config)
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
-
-            host.Run();
-            */
-
-            BuildWebHost(args).Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(new ConfigurationBuilder()
-                .AddCommandLine(args)
-                .Build()
-            )
-            .UseStartup<Startup>()
-            .Build();
+                .UseStartup<Startup>();
     }
 }

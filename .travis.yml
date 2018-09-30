@@ -2,7 +2,7 @@ language: csharp
 dist: trusty
 sudo: required
 mono: none
-dotnet: 2.0.0   # this is the version number of the .Net Core SDK, not the .Net Core Runtime
+dotnet: 2.1.4   # this is the version number of the .Net Core SDK, not the .Net Core Runtime
 branches:  
   only:
     - master
