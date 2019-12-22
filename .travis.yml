@@ -6,8 +6,9 @@ dotnet: 3.1.100   # this is the version number of the .Net Core SDK, not the .Ne
 branches:  
   only:
     - master
+before_install:
+  - sudo apt-get install dotnet-sdk-2.1 # Only need this line because BundlerMinifier.Core has a dependency on .net core 2
 before_script:
-  - sudo apt-get install dotnet-sdk-2.1
   - npm install -g bower
   - chmod a+x ./scripts/build.sh
 script:
