@@ -2,7 +2,7 @@ language: csharp
 dist: xenial
 sudo: required
 mono: none
-dotnet: 2.1.300   # this is the version number of the .Net Core SDK, not the .Net Core Runtime
+dotnet: 3.1.100   # this is the version number of the .Net Core SDK, not the .Net Core Runtime
 branches:  
   only:
     - master
